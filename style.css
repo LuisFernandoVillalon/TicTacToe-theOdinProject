@@ -1,0 +1,124 @@
+body {
+    height: 95vh;
+    background-color: #dc2626;
+    font-family: 'Lobster', cursive;
+    margin: 0px;
+    padding: 0px;
+}
+.flex-structure {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+.header {
+    background-color:#991b1b; 
+    color: #fef2f2;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 0 50px #f87171;
+}
+.flex {
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-direction: column;
+    padding: 20px 50px 5px 50px;
+}
+.gridGame {
+    display: grid;
+    height: 250px;
+    width: 75%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);    
+    gap: 10px;
+    background-color: green;
+    
+    
+}
+.gridGame > div {
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.XO {
+    font-size: 30px;
+}
+.disableCursor {
+    cursor: not-allowed;
+}
+.playerContainer {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.playerText {
+    color: white;
+    font-size: 75px;
+}
+div > span {
+    color: black;
+}
+.resetBtn {
+    background-color: #dc2626;
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 50px; 
+    border-color: #991b1b;
+    border-radius: 30%;
+    color:white;
+    transition: all .2s ease-in-out; 
+    border-width: 10px;   
+}
+.resetBtn:hover {
+    background-color: #fde047;
+    color: #713f12;
+    border-color: #fde047;
+    transform: scale(1.1); 
+    cursor: pointer;
+  }
+  .popup {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+  }
+  .center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+  }
+  .hidden {
+    display: none;
+  }
+
+  .flex-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+.popup-bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    background-color: #713f12;
+    border-radius: 15px;
+    margin-top: 25%;
+}
