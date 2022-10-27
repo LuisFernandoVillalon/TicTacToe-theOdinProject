@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <title>Tic-Tac-Toe!</title>
+</head>
+<body>
+    <div class="flex-structure">
+        <div class="header">Tic-Tac-Toe!</div>
+
+        <div class="flex">
+            <div class="gridGame">
+                <div class="XO" id="1"></div>
+                <div class="XO" id="2"></div>
+                <div class="XO" id="3"></div>
+                <div class="XO" id="4"></div>
+                <div class="XO" id="5"></div>
+                <div class="XO" id="6"></div>
+                <div class="XO" id="7"></div>
+                <div class="XO" id="8"></div>
+                <div class="XO" id="9"></div>
+            </div>
+            <div class="playerContainer">
+                <div class="playerText">Player 1: <span>X</span></div>
+                <div class="playerText">Player 2: <span>O</span></div>
+            </div>
+            
+            <button class="resetBtn" id="reset">
+                    Reset
+            </button>
+            <div class="popup hidden">
+                <div class="flex-popup">
+                    <div class="popup-bg">
+                        <div class="playerText " id="results">
+                            Results
+                        </div>
+                        <button class="resetBtn " id="resetPopUp">
+                                Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
