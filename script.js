@@ -1,5 +1,7 @@
 let element = document.getElementsByClassName("XO");
+let mode = document.getElementById("levels");
 let reset = document.getElementById("reset");
+let rst = document.getElementById("rst");
 let resetPopUp = document.getElementById("resetPopUp");
 let result = document.getElementById("results");
 let one = document.getElementById("1");
@@ -14,6 +16,9 @@ let nine = document.getElementById("9");
 let Gameboard = [one, two, three, four, five, six, seven, eight, nine]
 const player1 = "X";
 const player2 = "O";
+function randomChoice (options) {
+    return Math.floor(Math.random() * options.length);
+}
 function emptyIndexies(board){
     return  board.filter(s => s != "O" && s != "X");
 }
@@ -121,44 +126,44 @@ function checkWinner() {
             if (booleanArr[i] == true) {
                 if (i == 0 || i == 3 || i == 6) {
                     if (stringArr[0] == "X") {
-                        result.innerHTML = "Player 1 is the winner!";
+                        result.innerHTML = "You win!";
                         return true;
                     } else if (stringArr[0] == "O") {
-                        result.innerHTML = "Player 2 is the winner!";
+                        result.innerHTML = "The computer wins!";
                         return true;
                     }
                 } else if (i == 1) {
                     if (stringArr[3] == "X") {
-                        result.innerHTML = "Player 1 is the winner!";
+                        result.innerHTML = "You win!";
                         return true;
                     } else if (stringArr[3] == "O") {
-                        result.innerHTML = "Player 2 is the winner!";
+                        result.innerHTML = "The computer wins!";
                         return true;
                     }
                 } else if (i == 2) {
                     if (stringArr[6] == "X") {
-                        result.innerHTML = "Player 1 is the winner!";
+                        result.innerHTML = "You win!";
                         return true;
                     } else if (stringArr[6] == "O") {
-                        result.innerHTML = "Player 2 is the winner!";
+                        result.innerHTML = "The computer wins!";
                         return true;
                     }
                 } else if (i == 4) {
                     if (stringArr[1] == "X") {
-                        result.innerHTML = "Player 1 is the winner!";
+                        result.innerHTML = "You win!";
                         return true;
                     } else if (stringArr[1] == "O") {
-                        result.innerHTML = "Player 2 is the winner!";
+                        result.innerHTML = "The computer wins!";
                         return true;
                     }
                 } else if (i == 7 || i == 5) {
                     if (stringArr[2] == "X") {
                         
-                        result.innerHTML = "Player 1 is the winner!";
+                        result.innerHTML = "You win!";
                         return true;
                     } else if (stringArr[2] == "O") {
                         
-                        result.innerHTML = "Player 2 is the winner!";
+                        result.innerHTML = "The computer wins!";
                         return true;
                     }
                 }
@@ -167,7 +172,7 @@ function checkWinner() {
     } 
 }
 function computerTurn() {
-   
+   let choice;
     let stringArr = [];
     for (let i = 0; i < Gameboard.length; ++i) {
         if (Gameboard[i].innerHTML) {
@@ -177,11 +182,17 @@ function computerTurn() {
         }
     }
     let options = emptyIndexies(stringArr);
+    
     if (options.length == 0) {
         return;
     }
-    let objectAns = minimax(stringArr, player2);
-    let choice = objectAns.index;
+    if (mode.value == "hard") {
+        let objectAns = minimax(stringArr, player2);
+         choice = objectAns.index;
+    } else if (mode.value == "easy") {
+        let temp = randomChoice(options);
+        choice = options[temp];
+    }
     if (Gameboard[choice].innerHTML == "") {
         Gameboard[choice].innerHTML = player2;  
     }          
@@ -201,15 +212,21 @@ reset.addEventListener('click', function onClick() {
 
     for (let i = 0; i < Gameboard.length; ++i) {
         Gameboard[i].innerHTML = "";
-        Gameboard[i].removeAttribute("value");
     }
     result.innerHTML = "Who will win?";
 
 });
+mode.addEventListener('click', function onClick() {
+
+    for (let i = 0; i < Gameboard.length; ++i) {
+        Gameboard[i].innerHTML = "";
+    }
+
+});
+
 resetPopUp.addEventListener('click', function onClick() {
     for (let i = 0; i < Gameboard.length; ++i) {
         Gameboard[i].innerHTML = "";
-        Gameboard[i].removeAttribute("value");
     }
     let popUp = document.querySelector(".popup");
     popUp.classList.add("hidden");
