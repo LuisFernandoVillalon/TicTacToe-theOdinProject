@@ -1,9 +1,18 @@
+:root {
+    --big-text: 100px;
+    --med-text: 75px;
+    --btn-text: 50px;
+}
 body {
     height: 95vh;
     background-color: #dc2626;
     font-family: 'Lobster', cursive;
     margin: 0px;
     padding: 0px;
+}
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
 }
 .flex-structure {
     display: flex;
@@ -15,7 +24,7 @@ body {
 .header {
     background-color:#991b1b; 
     color: #fef2f2;
-    font-size: 100px;
+    font-size: var(--big-text);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +72,7 @@ body {
 }
 .playerText {
     color: white;
-    font-size: 75px;
+    font-size: var(--med-text);
 }
 div > span {
     color: black;
@@ -72,7 +81,7 @@ div > span {
     background-color: #dc2626;
     color: white;
     font-family: 'Lobster', cursive;
-    font-size: 50px; 
+    font-size: var(--btn-text); 
     border-color: #991b1b;
     border-radius: 30%;
     color:white;
@@ -121,4 +130,74 @@ div > span {
     background-color: #713f12;
     border-radius: 15px;
     margin-top: 25%;
+}
+.last-flex {
+    background-color:#991b1b; 
+    color: #fef2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 0 50px #f87171;
+     position: fixed;
+    bottom: 0px; 
+    font-size: 20px;
+    padding-top: 5px;
+}
+.padding {
+    display: flex;
+    padding-bottom: 55px;
+}
+.icon-container {
+    display: flex;
+    color: white;
+    padding-left: 24px; 
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    gap: 20px;
+}
+.fa-brands, .fa-solid {
+   
+    text-shadow: 0 0 15px #991b1b; 
+}
+.fa-linkedin:hover, .fa-r:hover {
+    text-shadow: none; 
+    cursor: pointer;
+    animation-name: counterspin;
+    animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.fa-github:hover, .fa-instagram:hover {
+    text-shadow: none; 
+    cursor: pointer;
+    animation-name: spin;
+    animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+ }
+ @keyframes counterspin {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+ }
+ @media (max-width: 1000px) {
+    :root {
+    --big-text: 50px;
+    --med-text: 35px;
+    --btn-text: 25px;
+   
+      }
 }
