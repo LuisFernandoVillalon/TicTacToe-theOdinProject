@@ -1,7 +1,6 @@
 let element = document.getElementsByClassName("XO");
 let mode = document.getElementById("levels");
 let reset = document.getElementById("reset");
-let rst = document.getElementById("rst");
 let resetPopUp = document.getElementById("resetPopUp");
 let result = document.getElementById("results");
 let one = document.getElementById("1");
@@ -14,14 +13,18 @@ let seven = document.getElementById("7");
 let eight = document.getElementById("8");
 let nine = document.getElementById("9");
 let Gameboard = [one, two, three, four, five, six, seven, eight, nine]
+//human
 const player1 = "X";
+//ai
 const player2 = "O";
 function randomChoice (options) {
     return Math.floor(Math.random() * options.length);
 }
+// returns list of the indexes of empty spots on the board
 function emptyIndexies(board){
     return  board.filter(s => s != "O" && s != "X");
 }
+// winning combinations using the board indexies
 function winning(board, player) {
     if (
         (board[0] == player && board[1] == player && board[2] == player) ||
@@ -38,8 +41,12 @@ function winning(board, player) {
         return false;
     }
 }
+//minimax function using recursion to obtain best possible move
 function minimax(stringArr, player) {
+    //available spots
     let availSpots = emptyIndexies(stringArr);
+    // checks for the terminal states such as win, lose, and tie 
+    // and returning a value accordingly
     if (winning(stringArr, player1)) {
       return { score: -10 };
     }
@@ -49,16 +56,24 @@ function minimax(stringArr, player) {
     else if (availSpots.length == 0) {
       return { score: 0 };
     }
+    // an array to collect all the objects
     let moves = [];
+
+    // loop through available spots
     for (let i = 0; i < availSpots.length; ++i) {
+    //create an object for each
       let move = {};
       for (let j = 0; j < stringArr.length; ++j) {
         if (availSpots[i] == stringArr[j]) {      
+          //set the empoty spot to the current player
           stringArr[j] = player;
+          //store the index in that spot
            move.index = j;
           break;
         }
       }
+      //collect the score resulted from calling minimax 
+      //on the opponent of the current player
       if (player == player2) {
         let result = minimax(stringArr, player1);
         move.score = result.score;
@@ -66,10 +81,13 @@ function minimax(stringArr, player) {
         let result = minimax(stringArr, player2);
         move.score = result.score;
       }
+      // reset the spot to empty
       stringArr[move.index] = move.index;
+      // push the object to the array
       moves.push(move);
     }
     let bestMove;
+    // if it is the computer's turn loop over the moves and choose the move with the highest score
     if (player === player2) {
       let bestScore = -10000;
       for (let i = 0; i < moves.length; i++) {
@@ -79,6 +97,7 @@ function minimax(stringArr, player) {
         }
       }
     } else {
+      // else loop over the moves and choose the move with the lowest score
       let bestScore = 10000;
       for (let i = 0; i < moves.length; i++) {
         if (moves[i].score < bestScore) {
@@ -87,7 +106,7 @@ function minimax(stringArr, player) {
         }
       }
     }
-    
+    // return the chosen move (object) from the moves array
     return moves[bestMove];
 }
 function createPopUp() {
@@ -182,7 +201,6 @@ function computerTurn() {
         }
     }
     let options = emptyIndexies(stringArr);
-    
     if (options.length == 0) {
         return;
     }
@@ -197,6 +215,7 @@ function computerTurn() {
         Gameboard[choice].innerHTML = player2;  
     }          
 }
+//Loops adds an eventlistener to every every element stored in 'element'.
 for (let XO of element) {
     XO.addEventListener('click', function onClick() {
         for (let i = 0; i < Gameboard.length; ++i) {
