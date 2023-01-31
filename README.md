@@ -10,10 +10,5 @@ the difficulty of the computer Ez (easy) mode and Beast (hard) mode.
 
 # Technologies 
 
-HTML, CSS, JavaScript
+HTML, CSS, JavaScript, AI, Recursion, Minimax Algorithm
 
-# Challenges & Features
-
-To program the computer's AI hard mode I had to use the Minimax
-algorithm through recursion. It was a challange implementing but it 
-is a feature I hope to use in future projects. 
