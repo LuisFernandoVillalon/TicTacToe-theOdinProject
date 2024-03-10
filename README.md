@@ -10,7 +10,7 @@ the difficulty of the computer Ez (easy) mode and Beast (hard) mode.
 
 # Technologies 
 
-HTML, CSS, JavaScript, AI, Recursion, Minimax Algorithm
+HTML, CSS, JavaScript, Recursion, Minimax Algorithm
 
 # Live Preview 
 
